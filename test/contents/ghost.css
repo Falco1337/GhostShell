@@ -1,188 +1,330 @@
-/* Enhanced Modern Futuristic CSS Design with Improved Animations and Interactivity */
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
 :root {
-  /* Color Palette */
-  --bg-dark: #0a0a23;
-  --bg-glass: rgba(10, 10, 35, 0.6);
-  --neon-purple: #9d00ff;
-  --neon-cyan: #00fff7;
-  --neon-magenta: #ff00d4;
-  --text-primary: #e0e0ff;
-  --text-secondary: #a0a0c0;
-  --shadow-neon: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-purple);
-  --shadow-neon-hover: 0 0 15px var(--neon-magenta), 0 0 30px var(--neon-cyan);
-  --transition-speed: 0.35s;
-  --border-radius: 14px;
-  --animation-duration: 1.2s;
+  --color-bg: #0a0a0a;
+  --color-bg-alt: rgba(30, 30, 30, 0.6);
+  --color-accent: #00ffea;
+  --color-accent-hover: #00fff7;
+  --color-text-primary: #e0f7f9;
+  --color-text-secondary: #a0d9db;
+  --color-scrollbar-bg: rgba(10, 10, 10, 0.8);
+  --color-scrollbar-thumb: #00ffea;
+  --color-scrollbar-thumb-hover: #00fff7;
+  --color-button-bg: rgba(0, 255, 234, 0.1);
+  --color-button-bg-hover: rgba(0, 255, 234, 0.2);
+  --color-button-text: #00ffea;
+  --color-input-bg: rgba(10, 10, 10, 0.4);
+  --color-input-text: #e0f7f9;
+  --color-input-border: #00ffea;
+  --color-input-border-focus: #00fff7;
+  --transition-speed: 0.3s;
+
+  /* Enhanced futuristic neon colors */
+  --neon-glow: #00ffea;
+  --neon-glow-hover: #00fff7;
+  --neon-shadow: 0 0 6px #00ffea, 0 0 15px #00fff7;
+  --neon-shadow-hover: 0 0 10px #00fff7, 0 0 25px #00ffea;
 }
 
-*,
-*::before,
-*::after {
+html {
   box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg-dark);
-  color: var(--text-primary);
-  font-family: 'Orbitron', monospace, monospace;
-  font-size: 16px;
+  background-color: var(--color-bg);
+  font-family: 'Orbitron', sans-serif;
+  color: var(--color-text-primary);
+  font-size: 14px;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
-/* Scrollbar */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-bg);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-weight: 400;
+  position: relative;
+  overflow-x: hidden;
+}
+
 body::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
 
 body::-webkit-scrollbar-track {
-  background: var(--bg-glass);
-  border-radius: var(--border-radius);
-  backdrop-filter: blur(6px);
+  background: var(--color-scrollbar-bg);
+  border-radius: 8px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: var(--neon-cyan);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-neon);
-  transition: background var(--transition-speed);
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 8px;
+  transition: background-color var(--transition-speed);
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-magenta);
-  box-shadow: var(--shadow-neon-hover);
+  background-color: var(--color-scrollbar-thumb-hover);
 }
 
-/* Links */
 a {
-  color: var(--neon-cyan);
+  color: var(--color-accent);
   text-decoration: none;
-  font-weight: 700;
-  position: relative;
   transition: color var(--transition-speed);
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
 a::after {
   content: '';
   position: absolute;
   width: 100%;
-  height: 2px;
-  bottom: -4px;
+  height: 1.5px;
+  bottom: 0;
   left: 0;
-  background: var(--neon-magenta);
-  box-shadow: 0 0 8px var(--neon-magenta);
+  background: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accent);
   transform: scaleX(0);
-  transform-origin: right;
-  transition: transform var(--transition-speed);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
   z-index: -1;
-}
-
-a:hover,
-a:focus {
-  color: var(--neon-magenta);
-  outline: none;
 }
 
 a:hover::after,
 a:focus::after {
   transform: scaleX(1);
-  transform-origin: left;
+  transform-origin: bottom left;
 }
 
-/* Buttons */
+a:hover,
+a:focus {
+  color: var(--color-accent-hover);
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 0.75rem;
+}
+
+img {
+  border-radius: 50%;
+  margin-bottom: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.7);
+  transition: transform var(--transition-speed);
+}
+
+img:hover {
+  transform: scale(1.05) rotate(2deg);
+  filter: drop-shadow(0 0 4px var(--color-accent));
+}
+
+div.intros {
+  text-align: center;
+  color: var(--color-accent);
+  width: 80%;
+  font-size: 0.9rem;
+  margin: 0 auto 1.5rem auto;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 6px var(--color-accent);
+}
+
+div.intros a {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  transition: color var(--transition-speed);
+}
+
+div.intros a:hover {
+  color: var(--color-accent-hover);
+  text-shadow: 0 0 10px var(--color-accent-hover);
+}
+
+section.bodytop {
+  margin: 0.75rem 0;
+  text-align: center;
+}
+
+section.bodytop a {
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  margin: 0 0.4rem;
+  color: var(--color-accent);
+  background-color: var(--color-bg-alt);
+  border-radius: 8px;
+  box-shadow: 0 0 8px var(--color-accent);
+  transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+section.bodytop a:hover {
+  color: var(--color-bg);
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 0 14px var(--color-accent-hover);
+}
+
+div.currentfolder {
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0.75rem auto;
+  width: 90%;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+div.currentfolder a {
+  color: #00fff7;
+  font-weight: 600;
+  transition: color var(--transition-speed);
+  text-shadow: 0 0 4px #00fff7;
+}
+
+div.currentfolder a:hover {
+  color: #00b8aa;
+  text-shadow: 0 0 8px #00b8aa;
+}
+
+section.sources {
+  border-radius: 12px;
+  background-color: var(--color-bg-alt);
+  width: 70%;
+  height: 450px;
+  overflow-y: auto;
+  margin: 0 auto 1.5rem auto;
+  box-shadow: 0 0 16px rgba(0,255,234,0.6);
+  display: block;
+  padding: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-bg);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0,255,234,0.2);
+}
+
+section.sources::-webkit-scrollbar-track {
+  background: var(--color-scrollbar-bg);
+  border-radius: 8px;
+}
+
+section.sources::-webkit-scrollbar {
+  width: 10px;
+}
+
+section.sources::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 8px;
+  transition: background-color var(--transition-speed);
+}
+
+section.sources::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scrollbar-thumb-hover);
+}
+
+div.directory {
+  width: 95%;
+  height: 600px;
+  overflow-y: auto;
+  margin: 0 auto 1.5rem auto;
+  display: block;
+  color: var(--color-text-primary);
+  box-shadow: 0 0 16px rgba(0,255,234,0.7);
+  border-radius: 12px;
+  background-color: var(--color-bg-alt);
+  padding: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,255,234,0.3);
+}
+
+div.directory a {
+  color: var(--color-accent);
+  font-weight: 600;
+  transition: color var(--transition-speed);
+  text-shadow: 0 0 4px var(--color-accent);
+}
+
+/* Futuristic neon glow effect for links */
+div.directory a:hover {
+  color: var(--neon-glow-hover);
+  text-shadow: var(--neon-shadow-hover);
+}
+
+/* Neon glow buttons */
 button, input[type="submit"] {
-  background: var(--bg-glass);
-  color: var(--neon-cyan);
-  border: 1px solid var(--neon-cyan);
-  border-radius: var(--border-radius);
-  padding: 0.6rem 1.2rem;
-  font-family: 'Orbitron', monospace;
+  background: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  font-family: 'Orbitron', sans-serif;
   font-weight: 700;
   letter-spacing: 0.1em;
   cursor: pointer;
-  box-shadow: var(--shadow-neon);
-  transition: background var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
-  user-select: none;
-  backdrop-filter: blur(12px);
-  position: relative;
-  overflow: hidden;
-}
-
-button::before, input[type="submit"]::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300%;
-  height: 300%;
-  background: radial-gradient(circle, var(--neon-magenta) 10%, transparent 10.01%);
-  background-size: 10% 10%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.5s ease;
-  border-radius: 50%;
-  z-index: 0;
-}
-
-button:hover::before, input[type="submit"]:hover::before {
-  transform: translate(-50%, -50%) scale(1);
+  box-shadow: var(--neon-shadow);
+  transition: box-shadow 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0,255,234,0.3);
 }
 
 button:hover, input[type="submit"]:hover {
-  background: var(--neon-magenta);
-  color: var(--bg-dark);
-  box-shadow: var(--shadow-neon-hover);
-  z-index: 1;
+  background: var(--color-button-bg-hover);
+  color: var(--neon-glow-hover);
+  box-shadow: var(--neon-shadow-hover);
 }
 
-/* Inputs and Textareas */
+/* Neon glow inputs */
 input[type="text"], input[type="password"], textarea {
-  background: var(--bg-glass);
-  border: 1px solid var(--neon-cyan);
-  border-radius: 10px;
-  color: var(--text-primary);
-  padding: 0.5rem 0.75rem;
-  font-family: 'Orbitron', monospace;
+  background: var(--color-input-bg);
+  color: var(--color-input-text);
+  border: 1px solid var(--color-input-border);
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-family: 'Orbitron', sans-serif;
   font-weight: 600;
   letter-spacing: 0.05em;
-  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
-  outline: none;
-  box-shadow: var(--shadow-neon);
-  resize: vertical;
-  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(3px);
 }
 
 input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
-  border-color: var(--neon-magenta);
-  box-shadow: var(--shadow-neon-hover);
+  border-color: var(--neon-glow);
+  box-shadow: var(--neon-shadow);
+  outline: none;
 }
 
-/* Tables */
+/* Tables with futuristic style */
 table {
-  width: 100%;
   border-collapse: separate;
   border-spacing: 0 0.5rem;
-  background: var(--bg-glass);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-neon);
-  font-family: 'Orbitron', monospace;
-  color: var(--text-primary);
+  width: 100%;
+  background: var(--color-bg-alt);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 234, 0.4);
+  font-family: 'Orbitron', sans-serif;
+  color: var(--color-text-primary);
   letter-spacing: 0.05em;
-  backdrop-filter: blur(10px);
-  transition: box-shadow var(--animation-duration);
-}
-
-table:hover {
-  box-shadow: 0 0 25px var(--neon-magenta);
 }
 
 th, td {
@@ -191,58 +333,341 @@ th, td {
 }
 
 th {
-  background: rgba(157, 0, 255, 0.15);
+  background: rgba(0, 255, 234, 0.15);
   font-weight: 700;
-  color: var(--neon-purple);
+  color: var(--neon-glow);
   user-select: none;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-radius: 12px 12px 0 0;
 }
 
 tr:hover {
-  background: rgba(255, 0, 212, 0.25);
+  background: rgba(0, 255, 234, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Section headers with neon glow */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--neon-glow);
+  text-shadow: var(--neon-shadow);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+/* Add subtle animated background gradient */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(270deg, #0a0a0a, #001f29, #0a0a0a, #001f29);
+  background-size: 800% 800%;
+  animation: gradientShift 25s ease infinite;
+  z-index: -1;
+  filter: brightness(0.8);
+}
+
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+div.directory a:hover {
+  color: var(--color-accent-hover);
+}
+
+div.directory::-webkit-scrollbar-track {
+  background: var(--color-scrollbar-bg);
+  border-radius: 8px;
+}
+
+div.directory::-webkit-scrollbar {
+  width: 10px;
+}
+
+div.directory::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 8px;
+  transition: background-color var(--transition-speed);
+}
+
+div.directory::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scrollbar-thumb-hover);
+}
+
+div.directory table {
+  width: 100%;
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,255,234,0.3);
+  background-color: var(--color-bg);
+}
+
+div.directory th {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  color: var(--color-accent);
+  background-color: var(--color-bg-alt);
+  user-select: none;
+}
+
+div.directory td {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--color-text-primary);
+  border-top: 1px solid rgba(0, 255, 234, 0.15);
+  vertical-align: middle;
+}
+
+div.directory tr:hover {
+  background: rgba(0, 255, 234, 0.15);
   cursor: pointer;
   transition: background-color var(--transition-speed);
 }
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--neon-cyan);
-  text-shadow: var(--shadow-neon);
-  letter-spacing: 0.1em;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  transition: color var(--transition-speed);
+div.bombing {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
-  color: var(--neon-magenta);
-  text-shadow: var(--shadow-neon-hover);
+div.bombing h3 {
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
-/* Neon Glow Effects */
-.neon-glow {
-  color: var(--neon-cyan);
-  text-shadow: var(--shadow-neon);
-  transition: text-shadow var(--transition-speed);
+div.bombing input[type=text],
+div.bombing textarea {
+  background: var(--color-input-bg);
+  outline: none;
+  border: 1px solid var(--color-input-border);
+  color: var(--color-input-text);
+  border-radius: 8px;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  font-family: 'Orbitron', sans-serif;
+  transition: border-color var(--transition-speed);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 1rem auto;
+  display: block;
+  resize: none;
 }
 
-.neon-glow:hover {
-  text-shadow: var(--shadow-neon-hover);
+div.bombing input[type=text]:focus,
+div.bombing textarea:focus {
+  border-color: var(--color-input-border-focus);
+  box-shadow: 0 0 8px var(--color-input-border-focus);
+  outline: none;
 }
 
-/* Glassmorphism Background */
-.glass {
-  background: var(--bg-glass);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-neon);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(157, 0, 255, 0.3);
-  padding: 1rem;
-  color: var(--text-primary);
-  font-family: 'Orbitron', monospace;
+div.bombing button {
+  width: 40%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  background: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  box-shadow: 0 2px 8px rgba(0,255,234,0.5);
+  margin: 0 auto;
+  display: block;
 }
 
-/* Animated Background Gradient */
-body::before {
-  content: "";
+div.bombing button:hover {
+  background: var(--color-button-bg-hover);
+  color: var(--color-accent-hover);
+  box-shadow: 0 4px 14px var(--color-accent-hover);
+}
+
+#tbname {
+  width: 220px;
+}
+
+#tbcen {
+  text-align: center;
+}
+
+.tbdate {
+  width: 180px;
+}
+
+#cmd_area {
+  width: 80%;
+  height: 400px;
+  margin: 0 auto 1.5rem auto;
+  display: block;
+  text-align: center;
+  background-color: var(--color-bg-alt);
+  border-radius: 12px;
+  padding: 0.75rem;
+  box-shadow: 0 0 16px rgba(0,255,234,0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,255,234,0.3);
+}
+
+#cmd_area textarea {
+  padding: 12px;
+  border-radius: 8px;
+  width: 96.5%;
+  height: 260px;
+  background: var(--color-input-bg);
+  color: var(--color-accent);
+  resize: none;
+  outline: none;
+  border: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color var(--transition-speed);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+#cmd_area textarea:focus {
+  border: 1px solid var(--color-input-border-focus);
+  box-shadow: 0 0 14px var(--color-input-border-focus);
+}
+
+#cmd_area textarea::-webkit-scrollbar-track {
+  background: var(--color-scrollbar-bg);
+}
+
+#cmd_area textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+#cmd_area textarea::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 8px;
+  transition: background-color var(--transition-speed);
+}
+
+#cmd_area textarea::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scrollbar-thumb-hover);
+}
+
+#cmd_area input[type=text] {
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  background: var(--color-input-bg);
+  width: 100%;
+  outline: none;
+  color: var(--color-accent);
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  transition: border-color var(--transition-speed);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+#cmd_area input[type=text]:focus {
+  border: 1px solid var(--color-input-border-focus);
+  box-shadow: 0 0 14px var(--color-input-border-focus);
+}
+
+#cmd_area button {
+  width: 50%;
+  margin: 1rem auto 0 auto;
+  display: block;
+  font-size: 1.1rem;
+  background: var(--color-bg);
+  color: var(--color-accent);
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  padding: 0.6rem 0;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+#cmd_area button:hover {
+  color: var(--color-bg);
+  background: var(--color-accent-hover);
+  box-shadow: 0 0 14px var(--color-accent-hover);
+}
+
+#fnameshow {
+  color: var(--color-text-primary);
+}
+
+#fnameshow1 {
+  color: var(--color-accent);
+}
+
+#sshows {
+  text-align: center;
+}
+
+#buttontoedit {
+  width: 25%;
+  margin: 1.5rem auto 1.5rem auto;
+  display: block;
+}
+
+#buttontoedit button {
+  cursor: pointer;
+  font-size: 1.1rem;
+  background: var(--color-bg-alt);
+  width: 100%;
+  padding: 0.4rem;
+  border-radius: 12px;
+  color: var(--color-accent);
+  font-family: 'Orbitron', sans-serif;
+  border: none;
+  box-shadow: 0 0 8px var(--color-accent);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+#buttontoedit button:hover {
+  background: var(--color-accent-hover);
+}
+
+/* Additional subtle animations */
+button, input[type="submit"], a, div.intros, div.currentfolder, section.bodytop a {
+  will-change: transform, box-shadow, color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover, input[type="submit"]:hover, a:hover, div.intros a:hover, div.currentfolder a:hover, section.bodytop a:hover {
+  transform: translateY(-2px);
+  transition-duration: 0.3s;
+}
+
+/* Glassmorphism effect for modal or popup containers */
+.modal, .popup {
+  background: rgba(10, 10, 10, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 234, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 234, 0.3);
+  padding: 1.5rem;
+  color: var(--color-text-primary);
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  div.directory, section.sources, #cmd_area {
+    width: 95%;
+    height: auto;
+  }
+
+  table, div.directory table {
+    font-size: 0.85rem;
+  }
+
+  button, input[type="submit"] {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+}
