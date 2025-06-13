@@ -1,4 +1,4 @@
-/* Completely New Modern Futuristic CSS Design */
+/* Enhanced Modern Futuristic CSS Design with Improved Animations and Interactivity */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
@@ -15,6 +15,7 @@
   --shadow-neon-hover: 0 0 15px var(--neon-magenta), 0 0 30px var(--neon-cyan);
   --transition-speed: 0.35s;
   --border-radius: 14px;
+  --animation-duration: 1.2s;
 }
 
 *,
@@ -35,6 +36,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* Scrollbar */
@@ -112,12 +114,34 @@ button, input[type="submit"] {
   transition: background var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
   user-select: none;
   backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before, input[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, var(--neon-magenta) 10%, transparent 10.01%);
+  background-size: 10% 10%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+button:hover::before, input[type="submit"]:hover::before {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 button:hover, input[type="submit"]:hover {
   background: var(--neon-magenta);
   color: var(--bg-dark);
   box-shadow: var(--shadow-neon-hover);
+  z-index: 1;
 }
 
 /* Inputs and Textareas */
@@ -154,6 +178,11 @@ table {
   color: var(--text-primary);
   letter-spacing: 0.05em;
   backdrop-filter: blur(10px);
+  transition: box-shadow var(--animation-duration);
+}
+
+table:hover {
+  box-shadow: 0 0 25px var(--neon-magenta);
 }
 
 th, td {
@@ -183,6 +212,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  transition: color var(--transition-speed);
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  color: var(--neon-magenta);
+  text-shadow: var(--shadow-neon-hover);
 }
 
 /* Neon Glow Effects */
@@ -211,38 +246,3 @@ h1, h2, h3, h4, h5, h6 {
 /* Animated Background Gradient */
 body::before {
   content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(270deg, #0a0a23, #1a0033, #0a0a23, #1a0033);
-  background-size: 800% 800%;
-  animation: gradientShift 30s ease infinite;
-  z-index: -1;
-  filter: brightness(0.85);
-}
-
-@keyframes gradientShift {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-
-  section.sources, div.directory, #cmd_area {
-    width: 95%;
-    height: auto;
-  }
-
-  table, div.directory table {
-    font-size: 0.85rem;
-  }
-
-  button, input[type="submit"] {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-}
